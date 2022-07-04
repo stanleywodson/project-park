@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <?php $this->load->view('layout/sidebar')?>
                 <div class="main-content">
                     <div class="container-fluid">
-
+						<h1>Página HOME</h1>
                     </div>
                 </div>
 
@@ -23,7 +23,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </footer>
                 
             </div>
-        </div>
         
         
         
@@ -112,4 +111,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
             </div>
 
- 

@@ -25,6 +25,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     </div>
                     <div class="col-lg-4">
                         <nav class="breadcrumb-container" aria-label="breadcrumb">
+                        <nav class="breadcrumb-container" aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
                                     <a data-toggle="tooltip" data-placement="bottom" title="Home" href="<?= base_url() ?>"><i class="ik ik-home"></i></a>
@@ -134,7 +135,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                         </div>
                                     </div>
                                 <?php endif; ?>
-                                <button type="submit" id="tt" class="btn btn-primary mr-2">Submit</button>
+                                <button type="submit" id="tt" class="btn btn-secondary mr-2">Salvar</button>
                                 <button class="btn btn-light">Cancel</button>
                             </form>
                             <script>

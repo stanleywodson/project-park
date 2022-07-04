@@ -36,7 +36,48 @@ class Users extends CI_Controller
     {
         if (!$user_id) {
             // cadastrar usuário caso nao informe o id
-            exit('cadastrar usuário');
+			$this->form_validation->set_rules('first_name', 'Nome', 'trim|required|min_length[4]|max_length[20]');
+			$this->form_validation->set_rules('last_name', 'Sobre Nome', 'trim|required|min_length[4]|max_length[20]');
+			$this->form_validation->set_rules('username', 'Usuário', 'trim|required|min_length[4]|max_length[20]|is_unique[users.username]');
+			$this->form_validation->set_rules('email', 'Email', 'trim|valid_email|is_unique[users.email]');
+			$this->form_validation->set_rules('password', 'Senha', 'required|trim|min_length[8]');
+			$this->form_validation->set_rules('confirm_password', 'Confirmar Senha', 'required|trim|min_length[8]|matches[password]');
+
+			if ($this->form_validation->run()) {
+
+					$username = html_escape($this->input->post('username'));
+					$password = html_escape($this->input->post('password'));
+					$email 	  = html_escape($this->input->post('email'));
+					$additional_data = array(
+						'first_name' => $this->input->post('first_name'),
+						'last_name' => $this->input->post('last_name'),
+						'active' => $this->input->post('active'),
+					);
+					$group = array($this->input->post('perfil'));
+
+					$additional_data = html_escape($additional_data);
+					/*
+					echo '<pre>';
+					print_r($this->input->post());die;
+					*/
+					if($this->ion_auth->register($username, $password, $email, $additional_data, $group)){
+
+						$this->session->set_flashdata('sucesso', 'Dados cadastrados com sucesso!');
+					}else{
+						$this->session->set_flashdata('error', 'Erro ao cadastar Usuário!');
+					}
+
+					redirect($this->router->fetch_class());
+			}else{
+				$data = array(
+					'title' => 'Cadastrar Usuário',
+					'subtitle' => '',
+				);
+
+				$this->load->view('layout/header', $data);
+				$this->load->view('users/core');
+				$this->load->view('layout/footer');
+			}
         } else {
             // editar - usuário
             if ($this->ion_auth->user($user_id)->row()) {
@@ -146,4 +187,6 @@ class Users extends CI_Controller
             return true;
         }
     }
+
+
 }

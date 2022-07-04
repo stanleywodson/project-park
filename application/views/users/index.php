@@ -57,7 +57,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <a href="" class="btn btn-success">+Novo</a>
+                            <a data-toggle="tooltip" data-placement="bottom" title="Cadastrar Usuário" href="<?= site_url('users/core') ?>" class="btn btn-success">+Novo</a>
                         </div>
                         <div class="card-body">
                             <table class="table data-table">
