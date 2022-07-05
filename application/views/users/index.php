@@ -37,21 +37,34 @@ defined('BASEPATH') or exit('No direct script access allowed');
             </div>
 
             <?php if($message = $this->session->flashdata('sucesso')) : ?>
+
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-body">
+
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                                     <strong><?= $message ?></strong>
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             <?php endif; ?>
+
+			<?php if($message = $this->session->flashdata('error')) : ?>
+
+				<div class="row">
+					<div class="col-md-12">
+								<div class="alert bg-danger alert-danger alert-dismissible fade show" role="alert">
+									<strong><?= $message ?></strong>
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+					</div>
+				</div>
+			<?php endif; ?>
 
             <div class="row">
                 <div class="col-md-12">
@@ -83,9 +96,28 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                             <td><?= ($user->active == 1) ? '<span class="badge badge-pill badge-success">sim</span>' : '<span class="badge badge-pill badge-danger">Não</span>' ?></td>
                                             <td class="">
                                                 <a href="<?= site_url('users/core/' . $user->id) ?>" class="btn btn-icon btn-warning" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fas fa-edit"></i></a>
-                                                <a href="" class="btn btn-icon btn-danger" data-toggle="tooltip" data-placement="bottom" title="Excluir"><i class="fa fa-trash" aria-hidden="true"></i></a>
+												<button type="button" class="btn btn-icon btn-success" data-toggle="modal" data-target="#user-<?= $user->id?>"><i class="fa fa-trash" aria-hidden="true"></i></button>
                                             </td>
                                         </tr>
+										<!-- model premission delete-->
+										<div class="modal fade" id="user-<?= $user->id?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterLabel" aria-hidden="true">
+											<div class="modal-dialog modal-dialog-centered" role="document">
+												<div class="modal-content">
+													<div class="modal-header">
+														<h5 class="modal-title" id="exampleModalCenterLabel">excluir usuário - <b><?= $user->username ?></b> </h5>
+														<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+													</div>
+													<div class="modal-body">
+														<p>Tem certeza que deseja excluir</p>
+													</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-secondary" data-dismiss="modal">Sair</button>
+														<a href="<?= site_url('users/del/' . $user->id) ?>" class="btn btn-danger">Excluir</a>
+													</div>
+												</div>
+											</div>
+										</div>
+
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
