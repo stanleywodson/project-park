@@ -42,7 +42,7 @@ class Users extends CI_Controller
     public function core($user_id = '')
     {
         if (!$user_id) {
-            // cadastrar usuário caso nao informe o id
+            //o cadastro vai ocorrer caso nao informe o id
 			$this->form_validation->set_rules('first_name', 'Nome', 'trim|required|min_length[4]|max_length[20]');
 			$this->form_validation->set_rules('last_name', 'Sobre Nome', 'trim|required|min_length[4]|max_length[20]');
 			$this->form_validation->set_rules('username', 'Usuário', 'trim|required|min_length[4]|max_length[20]|is_unique[users.username]');
@@ -136,7 +136,6 @@ class Users extends CI_Controller
                     redirect($this->router->fetch_class());
                 } else {
                     // erro de validação
-                    echo 'erro na validação..';
                     $data = array(
                         'title' => 'Editar Usuário',
                         'subtitle' => '',
