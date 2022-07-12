@@ -9,19 +9,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
 	<?php $this->load->view('layout/sidebar')?>
 	<div class="main-content">
 		<div class="container-fluid">
-			<h1>Página em contrução...</h1>
+			<h1>Página do Sistema</h1>
 			<?php if($message = $this->session->flashdata('sucesso')) : ?>
 
 				<div class="row">
 					<div class="col-md-12">
-
 						<div class="alert alert-success alert-dismissible fade show" role="alert">
 							<strong><?= $message ?></strong>
 							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
 						</div>
-
 					</div>
 				</div>
 			<?php endif; ?>

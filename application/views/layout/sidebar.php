@@ -36,6 +36,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     </div>
                                 </div>
                                 <div class="nav-lavel">Administração</div>
+
+								<div class="nav-item">
+									<a href="<?= site_url('pricing')?>" data-toggle="tooltip" data-placement="bottom" title="Gerenciar Preços" aria-current="page"><i class="ik ik-dollar-sign"></i><span>Preços</span></a>
+								</div>
                                 <div class="nav-item">
                                     <a href="<?= site_url('users')?>" data-toggle="tooltip" data-placement="bottom" title="Gerenciar Usuários" aria-current="page"><i class="ik ik-users"></i><span>Usuários</span></a>
                                 </div>

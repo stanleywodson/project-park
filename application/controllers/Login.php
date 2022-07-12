@@ -21,8 +21,11 @@ class Login extends CI_Controller
 		$password = html_escape($this->input->post('password'));
 		$remember = false;
 
+		$user_name = $this->core_model->getById('users', array('email'=> $identity));
+
+
 		if($this->ion_auth->login($identity, $password, $remember)){
-			$this->session->set_flashdata('sucesso', 'Seja bem vindo(a)!');
+			$this->session->set_flashdata('sucesso', 'Seja bem vindo(a)!  '.$user_name->first_name.' '.$user_name->last_name);
 			redirect('/');
 		}else{
 			$this->session->set_flashdata('error', 'Email e ou/Login errados');
@@ -35,8 +38,10 @@ class Login extends CI_Controller
 
 	public function logout()
 	{
+
 		$this->ion_auth->logout();
 		redirect($this->router->fetch_class());
+
 	}
 
 }
