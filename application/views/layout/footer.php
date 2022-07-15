@@ -8,6 +8,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         
         
         <script src="<?= base_url('public/src/js/vendor/jquery-3.3.1.min.js')?>"></script>
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+		<script src="<?= base_url('public/js/teste.js')?>"></script>
         <script src="<?= base_url('public/plugins/popper.js/dist/umd/popper.min.js')?>"></script>
         <script src="<?= base_url('public/plugins/bootstrap/dist/js/bootstrap.min.js')?>"></script>
         <script src="<?= base_url('public/plugins/perfect-scrollbar/dist/perfect-scrollbar.min.js')?>"></script>

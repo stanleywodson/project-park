@@ -39,11 +39,11 @@ class Core_model extends CI_Model
 
             if($this->db->affected_rows() > 0){
                 
-                $this->session->set_flashdata('sucesso', 'Dados salvos com sucesso!');
+                return true;
                 
             }else{
 
-                $this->session->flashdata('error', 'Não foi possivel salvar os dados!');
+                return false;
                 
             }
             
@@ -52,6 +52,28 @@ class Core_model extends CI_Model
         }
 
     }
+
+	public function update($table = NULL, $data = NULL, $condition = NULL)
+	{
+		if($table && $this->db->table_exists($table) && is_array($data) && is_array($condition)){
+
+			$this->db->update($table, $data, $condition);
+
+			if($this->db->affected_rows() > 0){
+
+				return TRUE;
+
+			}else{
+
+				return FALSE;
+
+			}
+
+		}else{
+			return FALSE;
+		}
+
+	}
 
 	public function delete($table = NULL, $condition = NULL)
 	{
