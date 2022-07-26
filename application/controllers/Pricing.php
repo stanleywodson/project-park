@@ -30,6 +30,7 @@ class Pricing extends CI_Controller
 			)
 		);
 
+		//retorno para enviar dados em json e receber via axios
 		return $this->output
 			->set_content_type('application/json')
 			->set_output(json_encode($data['pricing']));

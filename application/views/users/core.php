@@ -57,7 +57,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                         <?= form_error('first_name', '<div class="text-danger">','</div>')?>
                                     </div>
                                     <div class="col-md-6 mb-20">
-                                        <label>Sobre Nome</label>
+                                        <label>Sobrenome</label>
                                         <input type="text" class="form-control" name="last_name" value="<?= (isset($user) ? $user->last_name : set_value('last_name')) ?>">
                                         <?= form_error('last_name', '<div class="text-danger">','</div>')?>
                                     </div>

@@ -41,10 +41,14 @@ class Users extends CI_Controller
 
     public function core($user_id = '')
     {
+
+		$json = array();
+		$json["status"] = 0;
+
         if (!$user_id) {
             //o cadastro vai ocorrer caso nao informe o id
 			$this->form_validation->set_rules('first_name', 'Nome', 'trim|required|min_length[4]|max_length[20]');
-			$this->form_validation->set_rules('last_name', 'Sobre Nome', 'trim|required|min_length[4]|max_length[20]');
+			$this->form_validation->set_rules('last_name', 'Sobrenome', 'trim|required|min_length[4]|max_length[20]');
 			$this->form_validation->set_rules('username', 'Usuário', 'trim|required|min_length[4]|max_length[20]|is_unique[users.username]');
 			$this->form_validation->set_rules('email', 'Email', 'trim|valid_email|is_unique[users.email]');
 			$this->form_validation->set_rules('password', 'Senha', 'required|trim|min_length[8]');
@@ -68,8 +72,9 @@ class Users extends CI_Controller
 					print_r($this->input->post());die;
 					*/
 					if($this->ion_auth->register($username, $password, $email, $additional_data, $group)){
-
-						$this->session->set_flashdata('sucesso', 'Dados cadastrados com sucesso!');
+						$json["status"] = 1;
+						echo json_encode($json);
+						//$this->session->set_flashdata('sucesso', 'Dados cadastrados com sucesso!');
 					}else{
 						$this->session->set_flashdata('error', 'Erro ao cadastar Usuário!');
 					}

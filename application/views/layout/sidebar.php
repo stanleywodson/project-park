@@ -27,6 +27,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <a href="pages/navbar.html"><i class="fas fa-users"></i><span>Mensalistas</span></a>
                                 </div>
 
+								<div class="nav-item">
+									<a href="<?= site_url('parking')?>"><i class="fas fa-parking"></i><span>Estacionar</span></a>
+								</div>
+
                                 <div class="nav-lavel">Administração</div>
 
 								<div class="nav-item">

@@ -5,10 +5,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
 </div>
-        
-        
-        <script src="<?= base_url('public/src/js/vendor/jquery-3.3.1.min.js')?>"></script>
+
+
+		<script
+		src="https://code.jquery.com/jquery-3.6.0.js"
+		integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+		crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 		<script src="<?= base_url('public/js/teste.js')?>"></script>
         <script src="<?= base_url('public/plugins/popper.js/dist/umd/popper.min.js')?>"></script>
         <script src="<?= base_url('public/plugins/bootstrap/dist/js/bootstrap.min.js')?>"></script>

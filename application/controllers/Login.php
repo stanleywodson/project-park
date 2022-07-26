@@ -25,6 +25,7 @@ class Login extends CI_Controller
 
 
 		if($this->ion_auth->login($identity, $password, $remember)){
+			echo json_encode($axios["status"] = 1);
 			$this->session->set_flashdata('sucesso', 'Seja bem vindo(a)!  '.$user_name->first_name.' '.$user_name->last_name);
 			redirect('/');
 		}else{

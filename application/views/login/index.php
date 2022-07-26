@@ -42,7 +42,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                     <i class="ik ik-lock"></i>
                                 </div>
                                 <div class="sign-btn text-center">
-                                    <button class="btn btn-theme">Entrar</button>
+                                    <button id="login" class="btn btn-theme">Entrar</button>
                                 </div>
                             </form>
                         </div>
