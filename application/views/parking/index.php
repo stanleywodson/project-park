@@ -92,11 +92,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                             <td><?= $park->precificacao_categoria?></td>
 											<td><?= $park->precificacao_valor_hora?></td>
 											<td><?= $park->estacionar_placa_veiculo?></td>
-                                            <td><?= ($park->estacionar_status == 1) ? '<span class="badge badge-pill badge-succddess">Final</span>' : '<span class="badge badge-pill badge-warning">Em Aberto</span>' ?></td>
+                                            <td><?= ($park->estacionar_status == 1) ? '<span class="badge badge-pill badge-success">Finalizado</span>' : '<span class="badge badge-pill badge-warning">Em Aberto</span>' ?></td>
 											<td><?= $park->forma_pagamento_nome?></td>
                                             <td class="">
-                                                <a href="<?= site_url('parking/core/' . $park->estacionar_id) ?>" class="btn btn-icon btn-warning" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fas fa-edit"></i></a>
-												<button type="button" class="btn btn-icon btn-success" data-toggle="modal" data-target="#user-<?= $park->estacionar_id?>"><i class="fa fa-trash" aria-hidden="true"></i></button>
+												<?php if($park->estacionar_status == 1):?>
+													<a href="#" class="btn btn-icon btn-primary" data-toggle="tooltip" data-placement="bottom" title="Visualizar"><i class="fas fa-eye"></i></a>
+													<button type="button" class="btn btn-icon btn-danger" data-toggle="modal" data-target="#user-<?= $park->estacionar_id?>"><i class="fa fa-trash" aria-hidden="true"></i></button>
+												<?php else:?>
+													<a href="<?= site_url('parking/core/'.$park->estacionar_id) ?>" class="btn btn-icon btn-warning" data-toggle="tooltip" data-placement="bottom" title="Visualizar"><i class="fas fa-edit"></i></a>
+													<button type="button" class="btn btn-icon btn-danger" data-toggle="modal" data-target="#user-<?= $park->estacionar_id?>"><i class="fa fa-trash" aria-hidden="true"></i></button>
+												<?php endif;?>
                                             </td>
                                         </tr>
 										<!-- model premission delete-->

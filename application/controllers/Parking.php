@@ -35,7 +35,7 @@ class Parking extends CI_Controller
 		);
 
 //		echo 'pre';
-//		print_r($data['parks']);die();dddddd
+//		print_r($data['parks']);die();
 
 		$this->load->view('layout/header', $data);
 		$this->load->view('parking/index');
@@ -47,11 +47,43 @@ class Parking extends CI_Controller
 		if(!$park_id){
 			//cadastrar
 		}else{
+
 			if(!$this->core_model->getById('estacionar', array('estacionar_id'=> $park_id))){
 				$this->session->set_flashdata('error', 'ticket nao encontrado para encerramento');
 				redirect($this->router->fetch_class());
 			}else{
 				//Encerramento
+
+				$estacionarTempoDecorrido = str_replace('.', '', $this->input->post('estacionar_tempo_decorrido'));
+
+				if ($estacionarTempoDecorrido > '015'){
+				$this->form_validation->set_rules('estacionar_forma_pagamento_id', 'Forma de Pagamento', 'required');
+				}
+
+				if ($this->form_validation->run()){
+//					echo 'pre';
+//					print_r($this->input->post());die();dd
+					$data = elements(
+						array(
+							'estacionar_valor_devido',
+							'estacionar_forma_pagamento_id',
+							'estacionar_tempo_decorrido'
+						),
+						$this->input->post()
+					);
+
+					if ($estacionarTempoDecorrido <= '015'){
+						$data['estacionar_forma_pagamento_id'] = 6; //pagamento grátis
+					}
+					$data['estacionar_data_saida'] = date('Y-m-d H:i:s');
+					$data['estacionar_status'] = 1;
+
+					$data = html_escape($data);
+					$this->core_model->update('estacionar', $data, array('estacionar_id' => $park_id));
+					redirect($this->router->fetch_class());
+
+					//criar metodo imprimir
+				}else{
 				$data = array(
 
 					'title' => 'Encerrando ticket',
@@ -69,12 +101,13 @@ class Parking extends CI_Controller
 					)
 				);
 
-//		echo 'pre';
-//		print_r($data['parks']);die();
+
 
 				$this->load->view('layout/header', $data);
 				$this->load->view('parking/core');
 				$this->load->view('layout/footer');
+				}
+
 			}
 		}
 

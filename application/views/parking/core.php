@@ -28,7 +28,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         <nav class="breadcrumb-container" aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a data-toggle="tooltip" data-placement="bottom" title="Home" href="<?= base_url() ?>"><i class="ik ik-home"></i></a>
+                                    <a data-toggle="tooltip" data-placement="bottom" title="Home" href="<?= site_url('parking') ?>">Estacionar</i></a>
                                 </li>
                                 <li class="breadcrumb-item active" data-toggle="tooltip" data-placement="bottom" title="Editar" aria-current="page"><?= (isset($title) ? $title : '') ?></li>
                             </ol>
