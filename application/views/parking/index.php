@@ -99,7 +99,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 													<a href="#" class="btn btn-icon btn-primary" data-toggle="tooltip" data-placement="bottom" title="Visualizar"><i class="fas fa-eye"></i></a>
 													<button type="button" class="btn btn-icon btn-danger" data-toggle="modal" data-target="#user-<?= $park->estacionar_id?>"><i class="fa fa-trash" aria-hidden="true"></i></button>
 												<?php else:?>
-													<a href="<?= site_url('parking/core/'.$park->estacionar_id) ?>" class="btn btn-icon btn-warning" data-toggle="tooltip" data-placement="bottom" title="Visualizar"><i class="fas fa-edit"></i></a>
+													<a href="<?= site_url('parking/core/'.$park->estacionar_id) ?>" class="btn btn-icon btn-warning" data-toggle="tooltip" data-placement="bottom" title="Encerrar"><i class="fas fa-edit"></i></a>
 													<button type="button" class="btn btn-icon btn-danger" data-toggle="modal" data-target="#user-<?= $park->estacionar_id?>"><i class="fa fa-trash" aria-hidden="true"></i></button>
 												<?php endif;?>
                                             </td>

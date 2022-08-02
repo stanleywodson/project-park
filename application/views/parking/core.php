@@ -199,7 +199,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 									<?php if (isset($estacionado) && $estacionado->estacionar_status == 1): ?>
 										<button type="submit" class="btn btn-success mr-2 disabled" value="" disabled>Encerrada</button>
 									<?php else: ?>
-										<a title="Cadastrar ordem de estacionamento" href="javascript:void(0)" class="btn btn btn-primary mr-2" data-toggle="modal" data-target="#cadastrar">Encerrar</i></a>
+										<a title="Cadastrar ordem de estacionamento" href="javascript:void(0)" class="btn btn btn-primary mr-2" data-toggle="modal" data-target="#cadastrar"><?php echo ($estacionado)? 'Encerrar':'Cadastrar'?></i></a>
 									<?php endif; ?>
 									<a href="<?php echo base_url($this->router->fetch_class()); ?>" class="btn btn-light">Voltar</a>
 								</div>
