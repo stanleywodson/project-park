@@ -31,11 +31,17 @@ class Core_model extends CI_Model
         }
     }
 
-    public function insert($table = NULL, $data = NULL)
+    public function insert($table = NULL, $data = NULL, $getLastId = null)
     {
         if($table && $this->db->table_exists($table) && is_array($data)){
 
             $this->db->insert($table, $data);
+
+			//Armazenando na sessão o ultimo id inserido
+			if($getLastId){
+				$this->session->set_userdata('last_id', $this->db->insert_id);
+			}
+
 
             if($this->db->affected_rows() > 0){
                 

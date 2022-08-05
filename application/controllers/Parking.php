@@ -72,8 +72,9 @@ class Parking extends CI_Controller
 				$data['estacionar_status'] = 0;
 
 				$data = html_escape($data);
-				$this->core_model->insert('estacionar', $data);
-				redirect($this->router->fetch_class());
+				$this->core_model->insert('estacionar', $data, TRUE);
+				$estacionar_id = $this->session->userdata('last_id');
+				redirect($this->router->fetch_class().'/acoes/'.$estacionar_id);
 
 				//criar metodo imprimir
 			}else{
@@ -100,6 +101,7 @@ class Parking extends CI_Controller
 				$this->load->view('layout/footer');
 			}
 		}else{
+
 
 			if(!$this->core_model->getById('estacionar', array('estacionar_id'=> $park_id))){
 				$this->session->set_flashdata('error', 'ticket nao encontrado para encerramento');
@@ -133,7 +135,7 @@ class Parking extends CI_Controller
 
 					$data = html_escape($data);
 					$this->core_model->update('estacionar', $data, array('estacionar_id' => $park_id));
-					redirect($this->router->fetch_class());
+					redirect($this->router->fetch_class().'/acoes/'.$park_id);
 
 					//criar metodo imprimir
 				}else{
@@ -218,4 +220,33 @@ class Parking extends CI_Controller
 			return TRUE;
 		}
 	}
+
+	public function acoes($estacionar_id = null)
+	{
+		if (!$this->core_model->getById('estacionar', array('estacionar_id' => $estacionar_id))){
+			$this->session->set_flashdata('error', 'Ticket não encontrado!');
+			redirect($this->router->fetch_class());
+		}else{
+			$data = array(
+
+				'title' => 'o que você gostaria de fazer ?',
+				'subtitle' => 'Escolha umas das opções a seguir',
+				'estacionado' => $this->core_model->getById('estacionar',  array('estacionar_id'=> $estacionar_id)),
+
+				'scripts' => array(
+					'plugins/mask/jquery.mask.min.js',
+					'plugins/mask/custom.js',
+					'js/estacionar/custom.js'
+
+				)
+			);
+
+
+
+			$this->load->view('layout/header', $data);
+			$this->load->view('parking/acoes');
+			$this->load->view('layout/footer');
+		}
+	}
+
 }
